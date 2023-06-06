@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::inertia('/login', 'Auth/LoginPage')->name('login');
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/home', function () {
         echo 'Home page';
