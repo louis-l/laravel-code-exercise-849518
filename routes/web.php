@@ -18,9 +18,12 @@ Route::get('/', function () {
 });
 
 Route::inertia('/login', 'Auth/LoginPage')->name('login');
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/home', function () {
-        echo 'Home page';
-    });
+        dd(
+            request()->user()->toArray()
+        );
+    })->name('home');
 });
