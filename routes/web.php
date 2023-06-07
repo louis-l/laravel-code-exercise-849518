@@ -22,4 +22,6 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::inertia('/home', 'HomePage')->name('home');
+    Route::inertia('/companies', 'CompaniesPage')->name('company.index');
+    Route::inertia('/employees', 'EmployeesPage')->name('employee.index');
 });
