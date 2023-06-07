@@ -16,7 +16,7 @@ import AppSidebarItem from '@/Components/AppSidebarItem.vue'
         </AppSidebarItem>
 
         <AppSidebarItem
-            route-name="company.index"
+            route-name="companies.index"
             label="Companies"
         >
             <template #icon>
@@ -27,7 +27,7 @@ import AppSidebarItem from '@/Components/AppSidebarItem.vue'
         </AppSidebarItem>
 
         <AppSidebarItem
-            route-name="employee.index"
+            route-name="employees.index"
             label="Employees"
         >
             <template #icon>

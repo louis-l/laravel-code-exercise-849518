@@ -16,7 +16,7 @@ class CompanySeeder extends Seeder
     {
         Company::factory()
             ->count(30)
-            ->has(Employee::factory()->count(fake()->numberBetween(1, 10)), 'employees')
+            ->has(Employee::factory()->count(3), 'employees')
             ->create();
     }
 }
