@@ -1,15 +1,11 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue'
 import { Head, Link } from '@inertiajs/vue3'
-import AppTextInput from '@/Components/AppTextInput.vue'
-import { ref } from 'vue'
+import AppLayout from '@/Layouts/AppLayout.vue'
 import AppButtonPrimary from '@/Components/AppButtonPrimary.vue'
 
 defineProps({
     companies: Object,
 })
-
-const searchInput = ref('')
 </script>
 
 <template>
