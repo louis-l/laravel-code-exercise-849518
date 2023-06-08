@@ -12,6 +12,14 @@ class Employee extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'company_id',
+        'email',
+        'phone',
+    ];
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);

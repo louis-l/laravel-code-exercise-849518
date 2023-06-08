@@ -4,10 +4,20 @@
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import axios from 'axios';
-window.axios = axios;
+import axios from 'axios'
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios = axios
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+
+
+// https://github.com/jerrywu001/vue3-toastify
+import 'vue3-toastify/dist/index.css'
+
+import { updateGlobalOptions } from 'vue3-toastify'
+updateGlobalOptions({
+    theme: 'colored',
+})
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
