@@ -16,7 +16,7 @@ const companyForm = useForm({
 
 const handleFormSubmit = async () => {
     companyForm.post(route('companies.store'), {
-        onFinish: () => {
+        onSuccess: () => {
             companyForm.reset()
 
             toast('New company has been created')

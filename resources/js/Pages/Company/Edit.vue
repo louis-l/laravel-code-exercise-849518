@@ -20,7 +20,7 @@ const handleFormSubmit = async () => {
             _method: 'put',
         }))
         .post(route('companies.update', props.company), {
-            onFinish: () => {
+            onSuccess: () => {
                 companyForm.reset()
 
                 toast('Company details have been updated')
