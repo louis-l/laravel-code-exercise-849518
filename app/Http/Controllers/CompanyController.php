@@ -15,7 +15,7 @@ class CompanyController extends Controller
         return Inertia::render('Company/Index', [
             'companies' => Company::query()
                 ->withCount('employees')
-                ->latest()
+                ->latest('id')
                 ->paginate(10),
         ]);
     }

@@ -6,7 +6,6 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Company;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class EmployeeController extends Controller
@@ -16,7 +15,7 @@ class EmployeeController extends Controller
         return Inertia::render('Employee/Index', [
             'employees' => Employee::query()
                 ->with('company')
-                ->latest()
+                ->latest('id')
                 ->paginate(10),
         ]);
     }
