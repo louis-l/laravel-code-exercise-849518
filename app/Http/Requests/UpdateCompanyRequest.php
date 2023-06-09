@@ -27,6 +27,7 @@ class UpdateCompanyRequest extends FormRequest
             'name' => ['required', 'string'],
             'email' => ['nullable', 'email'],
             'logo' => ['nullable', File::image()->dimensions(Rule::dimensions()->minWidth(100)->minHeight(100))],
+            'logo_previous' => ['nullable', 'string'],
             'website' => ['nullable', 'url'],
         ];
     }

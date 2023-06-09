@@ -60,8 +60,13 @@ class CompanyController extends Controller
                 'logo' => resolve(StoreCompanyLogo::class)->execute($request->file('logo')),
             ]);
 
+        // The "logo_previous" allows users to update other fields but not logo.
+        if (empty($companyData['logo']) && $companyData['logo_previous']) {
+            $companyData['logo'] = $companyData['logo_previous'];
+        }
+
         $company
-            ->fill($companyData->toArray())
+            ->fill($companyData->except('logo_previous'))
             ->save();
 
         return to_route('companies.index');

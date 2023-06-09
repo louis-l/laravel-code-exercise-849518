@@ -1,22 +1,28 @@
 <script setup>
+import { ref } from 'vue'
+import { toast } from 'vue3-toastify'
 import { Head, useForm } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import AppInputLabel from '@/Components/AppInputLabel.vue'
 import AppTextInput from '@/Components/AppTextInput.vue'
 import AppButtonPrimary from '@/Components/AppButtonPrimary.vue'
 import AppInputError from '@/Components/AppInputError.vue'
-import { toast } from 'vue3-toastify'
 
 const props = defineProps({
     company: Object,
 })
 
-const companyForm = useForm(props.company)
+const companyForm = useForm({
+    ...props.company,
+    logo: null,
+})
+const currentLogo = ref(props.company.logo)
 
 const handleFormSubmit = async () => {
     companyForm
         .transform((data) => ({
             ...data,
+            logo_previous: currentLogo.value,
             _method: 'put',
         }))
         .post(route('companies.update', props.company), {
@@ -73,9 +79,9 @@ const handleFormSubmit = async () => {
                     <div>
                         <AppInputLabel>Logo</AppInputLabel>
 
-                        <div v-if="companyForm.logo">
+                        <div v-if="currentLogo">
                             <img
-                                :src="companyForm.logo"
+                                :src="currentLogo"
                                 class="border rounded"
                             />
 
@@ -83,7 +89,7 @@ const handleFormSubmit = async () => {
                                 title="Click to upload new logo"
                                 type="button"
                                 class="text-xs text-slate-600 underline hover:text-blue-600"
-                                @click="companyForm.logo = null"
+                                @click="currentLogo = null"
                             >
                                 Change logo
                             </button>
@@ -112,5 +118,7 @@ const handleFormSubmit = async () => {
                 </form>
             </div>
         </section>
+
+        <pre>{{ {companyForm} }}</pre>
     </AppLayout>
 </template>
