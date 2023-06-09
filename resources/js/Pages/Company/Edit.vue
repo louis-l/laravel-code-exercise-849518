@@ -118,7 +118,5 @@ const handleFormSubmit = async () => {
                 </form>
             </div>
         </section>
-
-        <pre>{{ {companyForm} }}</pre>
     </AppLayout>
 </template>
