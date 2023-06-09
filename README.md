@@ -5,6 +5,13 @@ This is the code exercise for "LARAVEL DEVELOPER TEST" using:
 - VueJS v3
 - TailwindCSS v3
 
+## Demo
+
+Here is a quick demo video of the app:
+
+https://github.com/louis-l/laravel-code-exercise-849518/assets/10172565/761fd92e-1820-47c2-b82b-e5dd0d57e222
+
+
 # Get Started
 
 This project runs on Docker (via Laravel Sail). Therefore, you will need to install Docker before running this.
