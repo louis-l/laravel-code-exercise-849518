@@ -22,7 +22,7 @@ const form = useForm({
     remember: false,
 })
 
-const submit = () => {
+const handleLogin = () => {
     form.post(route('login'), {
         onSuccess: () => form.reset('password'),
     })
@@ -48,7 +48,7 @@ const submit = () => {
                             {{ status }}
                         </div>
 
-                        <form @submit.prevent="submit" class="space-y-4 md:space-y-6">
+                        <form @submit.prevent="handleLogin" class="space-y-4 md:space-y-6">
                             <div>
                                 <AppInputLabel for="email" value="Email" />
 
@@ -75,6 +75,7 @@ const submit = () => {
                                     placeholder="••••••••"
                                     required
                                     autocomplete="current-password"
+                                    @keyup.enter="handleLogin"
                                 />
 
                                 <AppInputError class="mt-2" :message="form.errors.password" />
@@ -100,7 +101,7 @@ const submit = () => {
                                 :disabled="form.processing"
                                 :class="{ 'opacity-25': form.processing }"
                                 class="w-full"
-                                @click="submit"
+                                @click="handleLogin"
                             >
                                 Log in
                             </AppButtonPrimary>

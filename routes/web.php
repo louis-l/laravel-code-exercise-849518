@@ -13,12 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/home');
 
 Route::inertia('/login', 'Auth/LoginPage')->name('login');
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::inertia('/home', 'HomePage')->name('home');

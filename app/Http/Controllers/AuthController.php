@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -21,5 +22,18 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return to_route('home');
+    }
+
+    public function logout(Request $request)
+    {
+        if (Auth::guard()->check()) {
+            Auth::guard()->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+        }
+
+        return to_route('login');
     }
 }
